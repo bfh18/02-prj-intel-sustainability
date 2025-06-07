@@ -1,1 +1,175 @@
-/* Add your CSS here */
+/* 1. RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f7fa;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+/* 2. HERO / HEADER */
+.hero {
+  background: linear-gradient(135deg, #0071c5, #00a6e0);
+  color: #fff;
+  text-align: center;
+  padding: 5em 1em;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.hero .logo {
+  width: 100px;
+  margin-bottom: 1em;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+.hero p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* 3. TIMELINE WRAPPER & LINE */
+.timeline-wrapper {
+  position: relative;
+  margin: auto;
+  max-width: 100%;
+  padding: 2em 0;
+}
+.timeline-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2em;
+  right: 2em;
+  height: 4px;
+  background: rgba(0, 166, 224, 0.3);
+  z-index: 0;
+}
+
+/* 4. TIMELINE CONTAINER */
+.timeline {
+  display: flex;
+  gap: 2em;
+  padding: 0 2em;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 2em;
+  /* hide native scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.timeline::-webkit-scrollbar {
+  display: none;
+}
+
+/* 5. CARD BASE STYLE */
+.card {
+  position: relative;
+  flex: 0 0 300px;
+  scroll-snap-align: center;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e0e4e8;
+  box-shadow: 0 6px 16px rgba(0, 113, 197, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 113, 197, 0.2);
+}
+
+/* 6. CARD HEADER */
+.card-header {
+  padding: 1em;
+}
+.card-header h2 {
+  color: #00a6e0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.card-header h3 {
+  font-size: 1.1rem;
+  margin: 0.3em 0 0.8em;
+  font-weight: 700;
+}
+
+/* 7. CARD IMAGE */
+.card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+/* 8. CARD BODY & INTERACTIVITY */
+.card-body {
+  padding: 1em;
+}
+.brief {
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+.details {
+  font-size: 0.9rem;
+  color: #444;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.card:hover .details {
+  max-height: 200px; /* reveal on hover */
+}
+
+/* 9. FOOTER */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  padding: 2em 1em;
+}
+
+/* 10. RESPONSIVE (Mobile) */
+@media (max-width: 768px) {
+
+  /* Hero adjustments */
+  .hero {
+    padding: 3em 1em;
+    clip-path: none;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Hide the timeline line on mobile */
+  .timeline-wrapper::before {
+    display: none;
+  }
+
+  /* Stack cards vertically */
+  .timeline {
+    flex-direction: column;
+    overflow-x: hidden;
+    padding: 0;
+  }
+  .card {
+    width: 90%;
+    margin: 1em auto;
+  }
+
+  /* Always show details on mobile */
+  .details {
+    max-height: none;
+  }
+}
